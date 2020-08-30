@@ -1,7 +1,7 @@
 ### x_lab_task
 
 # main.py
-This script needs in order to recognize audio. It uses ***Python*** and also lib ***tinkoff_voicekit_client*** for recognition. 
+This script is needed in order to recognize audio. It uses ***Python*** and also lib ***tinkoff_voicekit_client*** for recognition. 
 
 It takes:
 
