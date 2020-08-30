@@ -1,0 +1,25 @@
+SELECT 
+	v1.date, 
+	v1.result, 
+	v2.d_c_length, 
+	v2.d_c_count, p.name AS project_name, 
+	s.name AS server_name 
+FROM voicekit_database AS v1 
+	INNER JOIN (
+		SELECT  
+			date AS d_c_date, 
+			result AS d_c_result, 
+			COUNT(result) AS d_c_count, 
+			SUM(length) AS d_c_length 
+		FROM voicekit_database 
+			GROUP BY date, result
+		) AS v2 
+	ON v1.date 
+		BETWEEN '2012-08-20' AND '2020-08-30' 
+		AND v1.date = v2.d_c_date 
+		AND v1.result = v2.d_c_result 
+	INNER JOIN project AS p 
+	ON v1.project_id = p.id 
+	INNER JOIN server AS s 
+	ON v1.server_id = s.id 
+ORDER BY v1.date;
